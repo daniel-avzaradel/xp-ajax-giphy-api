@@ -15,7 +15,7 @@ gif.appendChild(image);
 send.addEventListener('click', (e) => {
     e.preventDefault();
 
-    xhr.open('GET', `https://api.giphy.com/v1/gifs/search?q=${search.value}&rating=g&limit=3&api_key=${API_key}`);
+    xhr.open('GET', `https://api.giphy.com/v1/gifs/search?q=${search.value}&rating=g&limit=50&api_key=${API_key}`);
     xhr.send();
     xhr.responseType = 'json';
     let url = '';
@@ -24,7 +24,7 @@ send.addEventListener('click', (e) => {
         if (xhr.status != 200) {
             console.log(`Error: ${xhr.status}: ${xhr.statusText}`)
         }
-        let random = Math.floor(Math.random() * 3)
+        let random = Math.floor(Math.random() * 50)
         console.log(random)
         url = xhr.response.data[random].images.original.url;
         image.setAttribute('src', `${url}`)
